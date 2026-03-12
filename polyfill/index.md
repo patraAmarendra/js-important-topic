@@ -31,6 +31,49 @@ if (typeof Promise === "undefined") {
 }
 ```
 
+## What is Transpilation in JavaScript?
+
+**Q: What is transpilation?**
+
+A: Transpilation is the process of converting code from one version of a language to another version of the same language. In JavaScript, tools like Babel transpile modern ES6+ code into ES5 so that it works in older browsers.
+
+```javascript
+// ES6+ code (input)
+const greet = (name = "Guest") => `Hello, ${name}!`;
+
+// Babel-transpiled ES5 code (output)
+var greet = function greet() {
+  var name =
+    arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "Guest";
+  return "Hello, " + name + "!";
+};
+```
+
+**Q: What is `arguments` here?**
+
+A: In JavaScript, `arguments` is a built-in array-like object available inside regular functions. It contains all values passed to that function.
+
+**Key points:**
+
+- It is array-like (has indexes and `length`) but not a real array.
+- `arguments[0]` is the first argument, `arguments[1]` is the second, and so on.
+- `arguments.length` tells how many arguments were passed.
+- It is available in regular functions, not in arrow functions.
+
+```javascript
+function demo() {
+  console.log(arguments.length); // number of passed arguments
+  console.log(arguments[0]); // first argument
+}
+
+demo("JavaScript", 2026);
+// Output:
+// 2
+// "JavaScript"
+```
+
+In the transpiled code above, Babel uses `arguments` to recreate default parameter behavior from ES6 in ES5.
+
 ## Where Do We Use Polyfills in Daily Coding?
 
 **Q: What are common polyfills used in production?**

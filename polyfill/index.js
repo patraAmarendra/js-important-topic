@@ -165,4 +165,4 @@ console.log("------------------- My custom reduce() polyfill -------------------
 const myReduceResult = mapData.myReduce((accumulator, currentValue) => {
     return accumulator + currentValue
 }, 0);
-console.log("Array myReduceResult:", myReduceResult); // Output: 15 
+console.log("Array myReduceResult:", myReduceResult); // Output: 15
