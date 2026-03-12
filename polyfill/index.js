@@ -13,13 +13,14 @@ const mapResult = mapData.map((value, index, array) => {
 });
 
 // If the callback function does not return a value, the resulting array will contain undefined for each element.
-const mapResult2 = mapData.map((item) => {});
+const mapResult2 = mapData.map((item) => { });
+console.log("\n\n");
+console.log('----------------------------- Array map() method -----------------------------');
 console.log("Array mapResult2:", mapResult2); // Output: [undefined, undefined, undefined, undefined, undefined]
 
 console.log("Array mapResult:", mapResult); // Output: [2, 4, 6, 8, 10]
-console.log(
-  "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-);
+
+console.log("------------------- My custom map() polyfill -------------------   ");
 
 //----------------------------------------------------------------------------------------------------------
 /**
@@ -54,7 +55,7 @@ const mymapResult2 = mapData.mycustomMap((item, index, array) => {
 });
 
 console.log("Array mymapResult2:", mymapResult2); // Output: [2, 4, 6, 8, 10]
-console.log("-----------------------------");
+console.log("\n\n");
 
 //---------------------------------------------------------------------------------------------------------
 
@@ -72,14 +73,13 @@ console.log("-----------------------------");
 
 // The filter() method creates a new array with all elements that pass the test implemented by the provided function.
 const filterResult = mapData.filter(() => {});
-
+console.log('----------------------------- Array filter() method -----------------------------');
 console.log("Array filterResult:", filterResult); // Output: []
 
 const filterResult2 = mapData.filter((item) => item % 2 === 0);
 console.log("Array filterResult2:", filterResult2); // Output: [2, 4]
-console.log(
-  "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-);
+
+console.log("------------------- My custom filter() polyfill -------------------   ");
 
 // myfilter polyfill:
 
@@ -107,6 +107,62 @@ Array.prototype.myFilter = function (cb) {
 
 const myFilterResult = mapData.myFilter((item) => item % 2 === 0);
 console.log("Array myFilterResult:", myFilterResult); // Output: [2, 4]
-console.log("-----------------------------");
+console.log("\n\n");
 
 //---------------------------------------------------------------------------------------------------------
+
+/**
+ * Array.forEach() polyfill
+ * forEach() executes a provided function once for each array element.
+ * forEach() does not return a new array, it returns undefined.
+ */
+
+console.log('----------------------------- Array forEach() method -----------------------------');
+mapData.forEach((value, index, array) => {
+    console.log(`Value: ${value}, Index: ${index}, Array: ${array}`);
+})
+
+Array.prototype.myForEach = function (cb) {
+    for (let i = 0; i < this.length; i++) {
+        cb(this[i], i, this);
+    }
+}
+console.log("------------------- My custom forEach() polyfill -------------------   ");
+mapData.myForEach((value, index, array) => {
+    console.log(`myForEach Value: ${value}, Index: ${index}, Array: ${array}`);
+});
+
+console.log("\n\n");
+
+
+/**
+ * Array.reduce() polyfill
+ * reduce() executes a reducer function on each element of the array, resulting in a single output value.
+ * reduce() does not return a new array, it returns a single value.
+ * reduceData.reduce((accumulator, currentValue, index, array) => { }, initialValue)
+ *  it should have two parameters: the callback function and an optional initial value.
+ * 1. The callback function takes four arguments: the accumulator, the current value, the index of the current value, and the array being traversed.
+ * 2. The initial value is used as the first argument to the first call of the callback function. If no initial value is provided, the first element of the array is used as the initial accumulator value, and the iteration starts from the second element.
+ */
+
+const reduceResult = mapData.reduce((accumulator, currentValue) => {
+    return accumulator + currentValue
+}, 0);
+console.log('----------------------------- Array reduce() method -----------------------------');
+console.log("Array reduceResult:", reduceResult); // Output: 15
+
+
+Array.prototype.myReduce = function (cb, initialValue) {
+    let accumulator = initialValue;
+
+    for (let i = 0; i < this.length; i++) {
+        accumulator = cb(accumulator, this[i], i, this);
+    }
+
+    return accumulator;
+}
+console.log("------------------- My custom reduce() polyfill -------------------   ");
+const myReduceResult = mapData.myReduce((accumulator, currentValue) => {
+    return accumulator + currentValue
+}, 0);
+console.log("Array myReduceResult:", myReduceResult); // Output: 15 
