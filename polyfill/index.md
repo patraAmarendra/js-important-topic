@@ -60,9 +60,16 @@ if (!window.fetch) {
 
 ### Array Iteration Methods
 
-```javascript
+**Note:** Array methods like `map()`, `filter()`, and `reduce()` do not modify the original array. They iterate over each element and return a new array with the transformed or filtered results.
+
+````javascript
 // Polyfill for Array.prototype.map()
+**Note:** Array methods like `map()`, `filter()`, and `reduce()` do not modify the original array. They iterate over each element and return a new array with the transformed or filtered results.
+
 if (!Array.prototype.map) {
+    ```javascript
+        // map() callback receives: current element, index, original array
+    ```
   Array.prototype.map = function (callback) {
     const result = [];
     for (let i = 0; i < this.length; i++) {
@@ -73,8 +80,17 @@ if (!Array.prototype.map) {
 }
 
 // Polyfill for Array.prototype.filter()
+**Filter Key points:**
+- Returns a new array
+- Does not modify the original array
+- Runs the callback for each element
+- Adds elements only if the callback returns `true`
+
 if (!Array.prototype.filter) {
   Array.prototype.filter = function (callback) {
+    ```javascript
+        // filter() callback receives: current element, index, original array
+    ```
     const result = [];
     for (let i = 0; i < this.length; i++) {
       if (callback(this[i], i, this)) {
@@ -129,7 +145,7 @@ if (!Array.prototype.every) {
     return true;
   };
 }
-```
+````
 
 ### Array Methods
 
