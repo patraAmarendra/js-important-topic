@@ -155,6 +155,7 @@ console.log(Number.isNaN(NaN)); // true
 - Handle `null` and `undefined` carefully.
 - For numeric input, validate with `Number.isNaN()`.
 
+## 7) Practice file: [Type Coercion Output Questions](./coercion-output-questions.md)
 ---
 
 ## Rapid Fire Interview Questions
@@ -174,8 +175,6 @@ A: `-` forces numeric conversion.
 **Q5: Is `null == undefined` true?**  
 A: Yes, with loose equality.
 
-
-Practice file: [Type Coercion Output Questions](./coercion-output-questions.md)
 
 **Q6: Is `null === undefined` true?**  
 A: No, types are different.
