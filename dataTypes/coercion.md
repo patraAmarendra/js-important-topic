@@ -1,7 +1,5 @@
 ## Type Coercion in JavaScript
 
-Practice file: [Type Coercion Output Questions](./coercion-output-questions.md)
-
 ## 1) What is type coercion?
 
 **Q: What is type coercion in JavaScript?**
@@ -175,6 +173,9 @@ A: `-` forces numeric conversion.
 
 **Q5: Is `null == undefined` true?**  
 A: Yes, with loose equality.
+
+
+Practice file: [Type Coercion Output Questions](./coercion-output-questions.md)
 
 **Q6: Is `null === undefined` true?**  
 A: No, types are different.
