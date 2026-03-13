@@ -80,6 +80,47 @@ flowchart TD
   C -->|No| N[Next event loop tick]
 ```
 
+### Proper Explanation of Execution Priority
+
+This diagram shows the **actual order** JavaScript follows in each event loop cycle:
+
+1. **Run all synchronous code first**  
+   Everything in the main script executes on the call stack before any queued async callback.
+
+2. **Run all microtasks**  
+   After the stack is empty, JavaScript drains the microtask queue completely.  
+   Examples: `Promise.then/catch/finally`, `queueMicrotask`.
+
+3. **Run one macrotask**  
+   Then JavaScript picks exactly one task from the macrotask queue and executes it.  
+   Examples: `setTimeout`, `setInterval`, DOM events, I/O callbacks.
+
+4. **Check for newly created microtasks**  
+   If that macrotask created microtasks, JavaScript runs those microtasks **before** the next macrotask.
+
+5. **Repeat the cycle**  
+   This repeats continuously as long as the program is running.
+
+**Important interview rule:**
+
+- JavaScript does **not** alternate one-by-one between microtask and macrotask.
+- It always drains microtasks first, then takes one macrotask.
+
+```javascript
+console.log("sync");
+
+setTimeout(() => console.log("macro"), 0);
+Promise.resolve().then(() => console.log("micro"));
+```
+
+Output:
+
+```text
+sync
+micro
+macro
+```
+
 ---
 
 ## 4) Microtask vs Macrotask (with example)
