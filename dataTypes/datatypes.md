@@ -181,6 +181,31 @@ console.log(Array.isArray([])); // true
 console.log(Array.isArray({})); // false
 ```
 
+### Why is `typeof undefined` "undefined" but `typeof null` "object"?
+
+**Q: Why does JavaScript return different results for `undefined` and `null` in `typeof`?**
+
+A:
+
+- `undefined` is a built-in primitive type in JavaScript, so `typeof undefined` correctly returns `"undefined"`.
+- `null` is also a primitive value, but `typeof null` returns `"object"` because of a **legacy bug** from the first JavaScript implementation.
+
+In early engines, values were stored with type tags, and `null` got the same tag as objects. That behavior became part of the language and could not be changed later without breaking old web code.
+
+```javascript
+console.log(typeof undefined); // "undefined"
+console.log(typeof null); // "object" (legacy behavior)
+```
+
+**Interview-safe way to check `null`:**
+
+```javascript
+const value = null;
+
+console.log(value === null); // true
+console.log(typeof value); // "object"
+```
+
 ---
 
 ## 7) Tricky interview questions (with answers)
