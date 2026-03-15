@@ -31,9 +31,24 @@ This guide is structured to help you:
 
 ```
 js-important-topic/
-├── README.md                 # This file - Overview and guide
-├── polyfill/                 # Polyfill implementations and examples
-└── [More topics coming...]
+├── README.md                        # This file - Overview and guide
+├── dataTypes/
+│   ├── datatypes.md                 # JavaScript data types
+│   ├── coercion.md                  # Type coercion
+│   └── coercion-output-questions.md # Coercion interview questions
+├── function/
+│   ├── closure.md                   # Closures and lexical scope
+│   ├── callApplyBind.md             # call, apply, bind methods
+│   └── task.md                      # Event loop and task queue
+├── polyfill/
+│   ├── index.md                     # Polyfill concepts and examples
+│   └── index.js                     # Polyfill implementations
+├── promises/
+│   └── promises.md                  # Promises and async/await
+├── prototype/
+│   └── prototype.md                 # Prototypal inheritance
+└── this/
+    └── this.md                      # this keyword
 ```
 
 ## 🚀 Getting Started
@@ -56,22 +71,23 @@ js-important-topic/
 ### Fundamentals
 
 - Hoisting
-- Variable Scope & Closure
-- `this` Binding
-- Prototypal Inheritance
-- Event Loop & Call Stack
+- Variable Scope & Closure — [`function/closure.md`](./function/closure.md)
+- `this` Keyword — [`this/this.md`](./this/this.md)
+- Prototypal Inheritance — [`prototype/prototype.md`](./prototype/prototype.md)
+- Event Loop & Call Stack — [`function/task.md`](./function/task.md)
+- Data Types & Coercion — [`dataTypes/`](./dataTypes/)
 
 ### Advanced Concepts
 
-- Promise & Error Handling
-- Async/Await Patterns
+- Promises & Async/Await — [`promises/promises.md`](./promises/promises.md)
+- `call`, `apply`, `bind` — [`function/callApplyBind.md`](./function/callApplyBind.md)
 - Memory Leaks & Garbage Collection
 - Web APIs
 - Module Systems (CommonJS, ES6 Modules)
 
 ### Practical Implementation
 
-- Polyfills for Array methods (map, filter, reduce)
+- Polyfills for Array methods (map, filter, reduce) — [`polyfill/`](./polyfill/)
 - Promise implementation
 - Debounce & Throttle utilities
 - Custom Hooks (if exploring React)
@@ -98,6 +114,11 @@ Feel free to add more topics, examples, or interview questions to enhance this l
 
 ## ⭐ Quick Links
 
+- [Promises & Async/Await](./promises/promises.md)
+- [Prototypal Inheritance](./prototype/prototype.md)
+- [`this` Keyword](./this/this.md)
+- [Closures](./function/closure.md)
+- [call, apply, bind](./function/callApplyBind.md)
 - [Polyfill Examples](./polyfill/)
 - [Common Interview Questions](#interview-preparation)
 - [Best Practices Guide](#-how-to-use-this-repository)
