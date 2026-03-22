@@ -216,7 +216,7 @@ const obj2 = {
   name: "Amarendra",
   show: function () {
     const x = () => {
-      console.log(this); // Logs obj2 because arrow functions inherit `this` from the enclosing context
+      console.log(this); // Logs obj2 because arrow functions inherit `this` from the enclosing  lexical context
     };
     x();
   },
@@ -278,18 +278,18 @@ flowchart TD
     A[Function Called] --> B{What type of function?}
     B -->|Normal Function| C[Check WHO called it]
     B -->|Arrow Function| D[Check WHERE it's defined]
-    
+
     C --> E{How was it called?}
     E -->|obj.method| F[this = obj]
     E -->|Standalone call| G{Strict mode?}
     G -->|Yes| H[this = undefined]
     G -->|No| I[this = global object]
     E -->|call/apply/bind| J[this = specified object]
-    
+
     D --> K[Look at enclosing scope]
     K --> L[Inherit this from parent context]
     L --> M[this = parent's this]
-    
+
     style F fill:#90EE90
     style H fill:#FFB6C1
     style I fill:#FFB6C1
