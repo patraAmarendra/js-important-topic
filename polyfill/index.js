@@ -18,7 +18,7 @@ console.log("\n\n");
 console.log('----------------------------- Array map() method -----------------------------');
 console.log("Array mapResult2:", mapResult2); // Output: [undefined, undefined, undefined, undefined, undefined]
 
-console.log("Array mapResult:", mapResult); // Output: [2, 4, 6, 8, 10]
+console.log("Array mapResult: ", mapResult); // Output: [2, 4, 6, 8, 10]
 
 console.log("------------------- My custom map() polyfill -------------------   ");
 
